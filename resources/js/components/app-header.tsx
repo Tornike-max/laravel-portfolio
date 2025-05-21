@@ -11,7 +11,7 @@ import { useInitials } from '@/hooks/use-initials';
 import { cn } from '@/lib/utils';
 import { type BreadcrumbItem, type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
+import { Folder, LayoutGrid, Menu, Search,Github,Linkedin,Laptop,Rows4,Contact } from 'lucide-react';
 import AppLogo from './app-logo';
 import AppLogoIcon from './app-logo-icon';
 
@@ -21,19 +21,44 @@ const mainNavItems: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
+    {
+        title: 'Work',
+        href: '/work',
+        icon: Laptop,
+    },
+    {
+        title: 'Testimonials',
+        href: '/testimonial',
+        icon: Rows4,
+    },
+    {
+        title: 'Contact',
+        href: '/contact',
+        icon: Contact,
+    },
 ];
 
 const rightNavItems: NavItem[] = [
     {
         title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
+        href: 'https://github.com/Tornike-max/laravel-portfolio',
         icon: Folder,
     },
     {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
+        title: 'Github',
+        href: 'https://github.com/Tornike-max',
+        icon: Github,
     },
+    {
+        title: 'Linkedin',
+        href: 'https://www.linkedin.com/in/tornike-ozbetelashvili-1732b2205/',
+        icon: Linkedin,
+    },
+    // {
+    //     title: 'Documentation',
+    //     href: 'https://laravel.com/docs/starter-kits#react',
+    //     icon: BookOpen,
+    // },
 ];
 
 const activeItemStyles = 'text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100';
@@ -129,12 +154,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                             <Button variant="ghost" size="icon" className="group h-9 w-9 cursor-pointer">
                                 <Search className="!size-5 opacity-80 group-hover:opacity-100" />
                             </Button>
-                            <Button variant="ghost" size="icon" className="group h-9 w-9 cursor-pointer">
-                                <select>
-                                    <option>Light</option>
-                                    <option>Dark</option>
-                                </select>
-                            </Button>
+                           
                             <div className="hidden lg:flex">
                                 {rightNavItems.map((item) => (
                                     <TooltipProvider key={item.title} delayDuration={0}>
@@ -156,6 +176,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                                         </Tooltip>
                                     </TooltipProvider>
                                 ))}
+                                
                             </div>
                         </div>
                         <DropdownMenu>
