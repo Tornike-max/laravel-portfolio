@@ -9,57 +9,12 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { UserMenuContent } from '@/components/user-menu-content';
 import { useInitials } from '@/hooks/use-initials';
 import { cn } from '@/lib/utils';
-import { type BreadcrumbItem, type NavItem, type SharedData } from '@/types';
+import { type BreadcrumbItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { Folder, LayoutGrid, Menu, Search,Github,Linkedin,Laptop,Rows4,Contact } from 'lucide-react';
+import {  Menu } from 'lucide-react';
 import AppLogo from './app-logo';
 import AppLogoIcon from './app-logo-icon';
-
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: '/dashboard',
-        icon: LayoutGrid,
-    },
-    {
-        title: 'Work',
-        href: '/work',
-        icon: Laptop,
-    },
-    {
-        title: 'Testimonials',
-        href: '/testimonial',
-        icon: Rows4,
-    },
-    {
-        title: 'Contact',
-        href: '/contact',
-        icon: Contact,
-    },
-];
-
-const rightNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/Tornike-max/laravel-portfolio',
-        icon: Folder,
-    },
-    {
-        title: 'Github',
-        href: 'https://github.com/Tornike-max',
-        icon: Github,
-    },
-    {
-        title: 'Linkedin',
-        href: 'https://www.linkedin.com/in/tornike-ozbetelashvili-1732b2205/',
-        icon: Linkedin,
-    },
-    // {
-    //     title: 'Documentation',
-    //     href: 'https://laravel.com/docs/starter-kits#react',
-    //     icon: BookOpen,
-    // },
-];
+import { mainNavItems, rightNavItems } from '@/constants/contsants';
 
 const activeItemStyles = 'text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100';
 
@@ -151,9 +106,9 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
 
                     <div className="ml-auto flex items-center space-x-2">
                         <div className="relative flex items-center space-x-1">
-                            <Button variant="ghost" size="icon" className="group h-9 w-9 cursor-pointer">
+                            {/* <Button variant="ghost" size="icon" className="group h-9 w-9 cursor-pointer">
                                 <Search className="!size-5 opacity-80 group-hover:opacity-100" />
-                            </Button>
+                            </Button> */}
                            
                             <div className="hidden lg:flex">
                                 {rightNavItems.map((item) => (
