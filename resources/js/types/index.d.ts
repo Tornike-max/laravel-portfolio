@@ -41,3 +41,14 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface Skill {
+    name: string;
+    icon?: LucideIcon | null;
+}
+
+export interface Type {
+    id: number;
+    type: string;
+    description?: string;
+}
