@@ -5,7 +5,7 @@ export const mainNavItems: NavItem[] = [
 
     {
         title: 'Home',
-        href: '/',
+        href: '/dashboard',
         icon: Home,
     },
     {
