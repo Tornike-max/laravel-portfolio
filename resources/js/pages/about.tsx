@@ -8,7 +8,6 @@ type Type = {
 
 const About = ({ types }: { types: Type[] }) => {
  
-console.log(types)
   return (
     <div className="flex h-full flex-col gap-4 rounded-xl p-4">
       <div className="flex items-center justify-center h-full">

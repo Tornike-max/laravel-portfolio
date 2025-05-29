@@ -1,7 +1,7 @@
 import AppLayout from '@/layouts/app-layout';
 import { Skill, Type, type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
-import { FaLaravel, FaReact } from "react-icons/fa";
+import { FaInstagram, FaLaravel, FaReact } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { SiMysql } from "react-icons/si";
 import { motion } from "framer-motion";
@@ -49,7 +49,7 @@ export default function Dashboard({skills,types}:{ skills: Skill[],types:Type[] 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.1 }}
-                        whileHover={{ scale: 1.01, y: -4, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
+                        whileHover={{ scale: 1.01, y: -4,  }}
                         className='max-w-[500px] object-cover' src='/avatar/avatar.webp'
                     />
 
@@ -79,7 +79,9 @@ export default function Dashboard({skills,types}:{ skills: Skill[],types:Type[] 
                             </motion.div>
                         ))}
                     </div>
-
+                <div className='w-full flex justify-start items-center'>
+                    <FaInstagram />
+                </div>
                 </div>
                     <motion.div
                     initial={{ opacity: 0, y: 20 }}
