@@ -9,7 +9,7 @@ type Type = {
 const About = ({ types }: { types: Type[] }) => {
  
   return (
-    <div className="flex h-full flex-col gap-4 rounded-xl p-4">
+    <section className="flex h-full flex-col gap-4 rounded-xl p-4">
       <div className="flex items-center justify-center h-full">
         <div className="max-w-2xl text-center">
           <h1 className="text-4xl font-bold mb-4 flex flex-col gap-3">
@@ -65,7 +65,7 @@ const About = ({ types }: { types: Type[] }) => {
           </motion.div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 
