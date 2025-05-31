@@ -14,4 +14,8 @@ class Skill extends Model
         "name",
         "slug",
     ];
+
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
 }

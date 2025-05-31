@@ -19,14 +19,14 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
 
-export default function Dashboard({skills,types}:{ skills: Skill[],types:Type[] }) {
+export default function Dashboard({skills,types,allskills}:{ skills: Skill[],types:Type[],allskills:Skill[] }) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
             <FirstSection skills={skills}/>
             <About types={types}/>
             <Work />
-            <Skills />
+            <Skills skills={allskills}/>
             <Testimonials />
             <Contact />
             <Footer />

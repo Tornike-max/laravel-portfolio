@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -26,10 +27,14 @@ class MainController extends Controller
     ];
 
         $types = Type::query()->with('technologies')->get();
+        $allskills = Skill::query()->with('type')->orderBy("id","asc")->get();
+
+        dd($allskills);
 
         return inertia("dashboard", [
             'skills' => $skills,
             "types"=> $types,
+            "allskills" => $allskills,
         ]);
     }
 }

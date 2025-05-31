@@ -73,7 +73,7 @@ const Contact = () => {
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        დამ<span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">კავშირ</span>ება
+        Contact<span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent"> Me</span>
       </motion.h2>
 
       <motion.div 
@@ -112,7 +112,7 @@ const Contact = () => {
             <div className="ml-4">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">ტელეფონი</h3>
               <a href="tel:+995123456789" className="text-indigo-500 dark:text-indigo-400 hover:underline">
-                +995 123 45 67 89
+                +995 577 38 41 06
               </a>
             </div>
           </motion.div>
@@ -237,12 +237,12 @@ const Contact = () => {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all disabled:opacity-70"
+                className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white cursor-pointer py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all disabled:opacity-70"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.1 }}
                 viewport={{ once: true }}
               >
                 {isSubmitting ? (

@@ -12,13 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('technologies', function (Blueprint $table) {
-            $table->foreignId('type_id')
-            ->nullable()
-            ->after('id')
-            ->constrained('types')
-            ->onDelete('set null');      
-       });
+        Schema::table('skills', function (Blueprint $table) {
+            $table->foreignIdFor(Type::class)->nullable();
+        });
     }
 
     /**
@@ -26,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('technologies', function (Blueprint $table) {
+        Schema::table('skills', function (Blueprint $table) {
             //
         });
     }

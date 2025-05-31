@@ -19,4 +19,9 @@ class Type extends Model
         return $this->hasMany(Technology::class);
     }
 
+    public function skills()
+    {
+        return $this->belongsTo(Skill::class);
+    }
+
 }
