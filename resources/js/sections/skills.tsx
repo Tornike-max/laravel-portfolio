@@ -104,7 +104,7 @@ const Skills = ({skills}:{skills:Skill[]}) => {
               transition={{ duration: 0.5 }}
             >
               <img 
-                src={`/skills/${skill.icon}`} 
+                src={`./skillIcons/${skill.icon}.webp`} 
                 alt={skill.name} 
                 className="w-full h-full object-contain"
               />
@@ -113,7 +113,7 @@ const Skills = ({skills}:{skills:Skill[]}) => {
             <div className="text-center">
               <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{skill.name}</h3>
               <motion.span 
-                className={`text-xs font-medium px-3 py-1 rounded-full bg-gradient-to-r ${skill.color} text-white`}
+                className={`text-xs font-medium px-3 py-1 rounded-full bg-gradient-to-r text-white`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
