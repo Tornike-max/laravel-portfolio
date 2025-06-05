@@ -54,3 +54,41 @@ export interface Type {
     type: string;
     description?: string;
 }
+
+export interface Testimonial {
+    id: number;
+    name: string;
+    testimonial: string;
+    image?: string;
+    position: string;
+    rating: number;
+    is_approved?: boolean;
+    created_at?: string;
+    updated_at?: string;
+    deleted_at?: string | null;
+}
+
+
+interface PaginationLink {
+  url: string | null;
+  label: string;
+  active: boolean;
+}
+
+export interface TestimonialPaginatedResponse {
+  current_page: number;
+  data: Testimonial[];
+  first_page_url: string;
+  from: number;
+  last_page: number;
+  last_page_url: string;
+  links: PaginationLink[];
+  next_page_url: string | null;
+  path: string;
+  per_page: number;
+  prev_page_url: string | null;
+  to: number;
+  total: number;
+}
+
+

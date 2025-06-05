@@ -1,5 +1,5 @@
 import AppLayout from '@/layouts/app-layout';
-import { Skill, Type, type BreadcrumbItem } from '@/types';
+import { Skill, Testimonial, TestimonialPaginatedResponse, Type, type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 
 import FirstSection from '@/sections/firstSection';
@@ -19,15 +19,18 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
 
-export default function Dashboard({skills,types,allskills}:{ skills: Skill[],types:Type[],allskills:Skill[] }) {
+export default function Dashboard({skills,types,allskills,testimonials}:{ skills: Skill[],types:Type[],allskills:Skill[],testimonials:TestimonialPaginatedResponse }) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
             <FirstSection skills={skills}/>
-            <About types={types}/>
+            <About types={types.map(type => ({
+                ...type,
+                description: type.description ?? ''
+            }))}/>
             <Work />
             <Skills skills={allskills}/>
-            <Testimonials />
+            <Testimonials testimonials={testimonials}/>
             <Contact />
             <Footer />
         </AppLayout>

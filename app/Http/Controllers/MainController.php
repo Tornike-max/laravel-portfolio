@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Skill;
 use App\Models\Technology;
+use App\Models\Testimonial;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -28,12 +29,13 @@ class MainController extends Controller
 
         $types = Type::query()->with('technologies')->get();
         $allskills = Skill::query()->with('type')->orderBy("id","asc")->get();
-
+        $testimonials = Testimonial::query()->orderBy("rating","desc")->paginate(3);
 
         return inertia("dashboard", [
             'skills' => $skills,
             "types"=> $types,
             "allskills" => $allskills,
+            "testimonials" => $testimonials,
         ]);
     }
 }

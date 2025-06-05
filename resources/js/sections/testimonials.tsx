@@ -1,3 +1,5 @@
+import { TestimonialPaginatedResponse } from "@/types";
+import { Link } from "@inertiajs/react";
 import { motion } from "framer-motion";
 import { StarIcon } from "lucide-react";
 
@@ -31,34 +33,10 @@ const hoverEffect = {
   transition: { duration: 0.3 }
 };
 
-const Testimonials = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: "დავით ქართველიშვილი",
-      role: "CEO, TechSolutions GE",
-      content: "ამ დეველოპერის მუშაობამ ჩვენი ვებ აპლიკაციის პროდუქტიულობა 40%-ით გაზარდა. განსაკუთრებით გამორჩეული იყო მათი ყურადღება დეტალებისადმი და პროფესიონალიზმი.",
-      rating: 5,
-      avatar: "/avatars/davit.webp"
-    },
-    {
-      id: 2,
-      name: "ანა მამულაშვილი",
-      role: "პროდუქტის მენეჯერი, StartupGeo",
-      content: "რეაქტისა და ლარაველის კომბინაცია ჩვენს პროექტზე ნამდვილად შთამბეჭდავი იყო. კოდის ხარისხი და დოკუმენტაცია გამორჩეული.",
-      rating: 4,
-      avatar: "/avatars/ana.webp"
-    },
-    {
-      id: 3,
-      name: "გიორგი ბერიძე",
-      role: "CTO, DigitalAgency",
-      content: "იშვიათად ვხვდები ისეთ ფრილანსერებს, ვინც ასეთი პასუხისმგებლობით უდგება პროექტებს. დროის დაცვა და კომუნიკაცია შესანიშნავი იყო.",
-      rating: 5,
-      avatar: "/avatars/giorgi.webp"
-    }
-  ];
+const Testimonials = ({testimonials}:{testimonials:TestimonialPaginatedResponse}) => {
+  
 
+  console.log(testimonials)
   return (
     <div className="w-full m-auto px-4 py-12">
       <motion.h2 
@@ -77,7 +55,7 @@ const Testimonials = () => {
         whileInView="show"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {testimonials.map((testimonial) => (
+        {testimonials.data.map((testimonial) => (
           <motion.div 
             key={testimonial.id}
             className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl p-6 flex flex-col"
@@ -90,14 +68,14 @@ const Testimonials = () => {
                 whileHover={{ rotate: 5, scale: 1.05 }}
               >
                 <img 
-                  src={testimonial.avatar} 
+                  src={testimonial.image} 
                   alt={testimonial.name} 
                   className="w-full h-full object-cover"
                 />
               </motion.div>
               <div className="ml-4">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">{testimonial.name}</h3>
-                <p className="text-sm text-indigo-500 dark:text-indigo-400">{testimonial.role}</p>
+                <p className="text-sm text-indigo-500 dark:text-indigo-400">{testimonial.position}</p>
               </div>
             </div>
 
@@ -107,7 +85,7 @@ const Testimonials = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              "{testimonial.content}"
+              "{testimonial.testimonial}"
             </motion.p>
 
             <div className="flex items-center">
@@ -123,6 +101,26 @@ const Testimonials = () => {
             </div>
           </motion.div>
         ))}
+      </motion.div>
+      <motion.div 
+          className="flex justify-center mt-12 flex-wrap gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          {testimonials.links.map((link, index) => (
+            <Link
+              key={index}
+              href={link.url ?? '#'}
+              preserveScroll={true}
+              className={`px-4 py-2 rounded-full text-sm transition ${
+                link.active 
+                  ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold' 
+                  : 'bg-gray-100  hover:bg-gradient-to-r from-indigo-500 to-purple-500 text-white dark:bg-gray-700 dark:text-white dark:hover:bg-indigo-700'
+              } ${!link.url ? 'pointer-events-none opacity-50' : ''}`}
+              dangerouslySetInnerHTML={{ __html: link.label }}
+            />
+          ))}
       </motion.div>
 
       {/* გადართვის ღილაკები (მორგებული პროექტების გალერეის სტილზე) */}

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\Technology;
+use App\Models\Testimonial;
 use App\Models\Type;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -95,7 +96,9 @@ class DatabaseSeeder extends Seeder
 
         // Technology::factory(10)->create();
 
-        Project::factory(10)->create();
+        // Project::factory(10)->create();
+        
+        Testimonial::factory(10)->create();
        
         // Type::factory()->create([
         //     'type' => 'Backend',

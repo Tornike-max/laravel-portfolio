@@ -69,7 +69,7 @@ const FilterProjects = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <img 
-                    src="/types/mobile.webp" 
+                    src="/types/databases.webp" 
                     alt="Modern UI/UX Portfolio Website" 
                     className="w-full h-full object-cover"
                     />

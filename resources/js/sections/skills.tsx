@@ -30,18 +30,6 @@ const tapEffect = {
 };
 
 const Skills = ({skills}:{skills:Skill[]}) => {
-  // const skills = [
-  //   { name: "React", category: "Frontend", icon: "react-icon.webp", color: "from-cyan-500 to-blue-500" },
-  //   { name: "Laravel", category: "Backend", icon: "laravel-icon.webp", color: "from-red-500 to-pink-500" },
-  //   { name: "Node.js", category: "Backend", icon: "nodejs-icon.webp", color: "from-green-500 to-emerald-500" },
-  //   { name: "TypeScript", category: "Frontend", icon: "typescript-icon.webp", color: "from-blue-500 to-indigo-500" },
-  //   { name: "Tailwind CSS", category: "Frontend", icon: "tailwind-icon.webp", color: "from-teal-500 to-cyan-500" },
-  //   { name: "MongoDB", category: "Database", icon: "mongodb-icon.webp", color: "from-green-600 to-lime-500" },
-  //   { name: "Framer Motion", category: "Animation", icon: "framer-icon.webp", color: "from-purple-500 to-pink-500" },
-  //   { name: "Docker", category: "DevOps", icon: "docker-icon.webp", color: "from-blue-400 to-cyan-500" },
-  //   { name: "GraphQL", category: "Backend", icon: "graphql-icon.webp", color: "from-pink-500 to-purple-600" }
-  // ];
-
 
   const [activeFilter, setActiveFilter] = useState("All");
 

@@ -11,7 +11,7 @@ const About = ({ types }: { types: Type[] }) => {
   return (
     <section className="flex h-full flex-col gap-4 rounded-xl p-4">
       <div className="flex items-center justify-center h-full">
-        <div className="max-w-2xl text-center">
+        <div className="max-w-3xl text-center">
           <h1 className="text-4xl font-bold mb-4 flex flex-col gap-3">
             <span>
               I Know That{' '}
@@ -26,8 +26,11 @@ const About = ({ types }: { types: Type[] }) => {
               </span>
             </span>
           </h1>
-          <p className="text-lg text-gray-600 mb-6">
-            I am a passionate developer with expertise in various technologies, dedicated to creating high-quality applications that drive business success.
+          <p className="text-lg text-gray-300 mb-6">
+            I’m a passionate full stack developer with hands-on experience in React, Laravel, C#, and .NET.
+            I specialize in building scalable, responsive applications with clean code and robust architecture. 
+            Whether working on frontend interfaces or backend systems, I’m dedicated to delivering high-quality 
+            solutions that solve real-world problems and support business growth.
           </p>
         </div>
       </div>
@@ -50,8 +53,8 @@ const About = ({ types }: { types: Type[] }) => {
                   ? '/types/frontend.webp' 
                 : item.type === "Full Stack" 
                   ? '/types/fullstack.webp' 
-                : item.type === 'Mobile Development' 
-                  ? '/types/mobile.webp' 
+                : item.type === 'Databases' 
+                  ? '/types/databases.webp' 
                 : ''}
               alt={item.type}
               className="w-20 h-20 object-cover rounded-full mx-auto mb-4 border-4 border-white shadow-md"
