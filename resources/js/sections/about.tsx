@@ -26,12 +26,8 @@ const About = ({ types }: { types: Type[] }) => {
               </span>
             </span>
           </h1>
-          <p className="text-gray-700 mb-6">
-            This application is a simple demonstration of a React-based web app that showcases user profiles,
-            skills, and other features.
-          </p>
-          <p className="text-gray-600">
-            It is built using modern web technologies and aims to provide a clean and user-friendly interface.
+          <p className="text-lg text-gray-600 mb-6">
+            I am a passionate developer with expertise in various technologies, dedicated to creating high-quality applications that drive business success.
           </p>
         </div>
       </div>
@@ -52,8 +48,8 @@ const About = ({ types }: { types: Type[] }) => {
                   ? '/types/backend.webp' 
                 : item.type === 'Frontend Development' 
                   ? '/types/frontend.webp' 
-                : item.type === "Devops" 
-                  ? '/types/devops.webp' 
+                : item.type === "Full Stack" 
+                  ? '/types/fullstack.webp' 
                 : item.type === 'Mobile Development' 
                   ? '/types/mobile.webp' 
                 : ''}

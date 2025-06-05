@@ -178,9 +178,9 @@ const FirstSection = ({ skills }: { skills: Skill[] }) => {
                 whileTap={{ scale: 0.9 }}
                 className='bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl shadow-sm p-2'
               >
-                <Link href={social.href} target="_blank" rel="noopener noreferrer">
+                <a href={social.href} target="_blank" rel="noopener noreferrer">
                   {social.icon}
-                </Link>
+                </a>
               </motion.div>
             ))}
           </motion.div>

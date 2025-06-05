@@ -46,6 +46,7 @@ export interface Skill {
     name: string;
     slug?: string;
     icon?: LucideIcon | null;
+    type?: Type;
 }
 
 export interface Type {
