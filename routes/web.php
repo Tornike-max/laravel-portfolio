@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\TestimonialsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -11,6 +12,7 @@ Route::get('/', function () {
 
 
 Route::get("/dashboard",[MainController::class,"index"])->name("dashboard");
+Route::post("/testimonials/store",[TestimonialsController::class,'store'])->name("testimonials.store");
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

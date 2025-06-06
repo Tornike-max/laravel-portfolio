@@ -1,9 +1,10 @@
+import Modal from "@/components/modal";
 import { TestimonialPaginatedResponse } from "@/types";
 import { Link } from "@inertiajs/react";
 import { motion } from "framer-motion";
 import { StarIcon } from "lucide-react";
+import { useState } from "react";
 
-// ანიმაციის ვარიანტები
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -33,20 +34,40 @@ const hoverEffect = {
   transition: { duration: 0.3 }
 };
 
-const Testimonials = ({testimonials}:{testimonials:TestimonialPaginatedResponse}) => {
+const Testimonials = ({ testimonials }: { testimonials: TestimonialPaginatedResponse }) => {
+  const [open, setOpen] = useState(false)
   
-
-  console.log(testimonials)
   return (
     <div className="w-full m-auto px-4 py-12">
       <motion.h2 
-        className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+        className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-       <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">Testimonials</span>
+        <span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+          Testimonials
+        </span>
       </motion.h2>
+
+      <motion.div 
+        className="flex justify-center mt-4 mb-10 gap-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        <motion.button
+          className="px-6 py-2 cursor-pointer rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold shadow-md transition"
+          whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(79, 70, 229, 0.4)" }}
+          whileTap={{ scale: 0.95 }}
+          onClick={()=>setOpen(open => !open)}
+        >
+          დაამატე რეკომენდაცია
+        </motion.button>
+        {open && (
+          <Modal setOpen={setOpen} open={open}/>
+        )}
+      </motion.div>
 
       <motion.div 
         className="grid grid-cols-1 lg:grid-cols-3 gap-8"
@@ -102,28 +123,30 @@ const Testimonials = ({testimonials}:{testimonials:TestimonialPaginatedResponse}
           </motion.div>
         ))}
       </motion.div>
+
+      {/* პაგინაცია */}
       <motion.div 
-          className="flex justify-center mt-12 flex-wrap gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          {testimonials.links.map((link, index) => (
-            <Link
-              key={index}
-              href={link.url ?? '#'}
-              preserveScroll={true}
-              className={`px-4 py-2 rounded-full text-sm transition ${
-                link.active 
-                  ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold' 
-                  : 'bg-gray-100  hover:bg-gradient-to-r from-indigo-500 to-purple-500 text-white dark:bg-gray-700 dark:text-white dark:hover:bg-indigo-700'
-              } ${!link.url ? 'pointer-events-none opacity-50' : ''}`}
-              dangerouslySetInnerHTML={{ __html: link.label }}
-            />
-          ))}
+        className="flex justify-center mt-12 flex-wrap gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        {testimonials.links.map((link, index) => (
+          <Link
+            key={index}
+            href={link.url ?? '#'}
+            preserveScroll={true}
+            className={`px-4 py-2 rounded-full text-sm transition ${
+              link.active 
+                ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold' 
+                : 'bg-gray-100 hover:bg-gradient-to-r from-indigo-500 to-purple-500 text-white dark:bg-gray-700 dark:text-white dark:hover:bg-indigo-700'
+            } ${!link.url ? 'pointer-events-none opacity-50' : ''}`}
+            dangerouslySetInnerHTML={{ __html: link.label }}
+          />
+        ))}
       </motion.div>
 
-      {/* გადართვის ღილაკები (მორგებული პროექტების გალერეის სტილზე) */}
+      {/* ყველა რეკომენდაციის ღილაკი */}
       <motion.div 
         className="flex justify-center mt-12 gap-4"
         initial={{ opacity: 0 }}
@@ -131,7 +154,7 @@ const Testimonials = ({testimonials}:{testimonials:TestimonialPaginatedResponse}
         transition={{ delay: 0.5 }}
       >
         <motion.button
-          className="px-6 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md"
+          className="px-6 py-2 cursor-pointer rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md"
           whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(79, 70, 229, 0.4)" }}
           whileTap={{ scale: 0.95 }}
         >

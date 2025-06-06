@@ -9,4 +9,14 @@ use Illuminate\Notifications\Notifiable;
 class Testimonial extends Model
 {
      use HasFactory, Notifiable;
+
+     protected $fillable = [
+         'name',
+         'testimonial',
+         'company',
+         'position',
+         'rating',
+         'image',
+         'rating',
+     ];
 }
