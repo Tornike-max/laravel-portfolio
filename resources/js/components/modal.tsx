@@ -17,7 +17,14 @@ export default function Modal({
     setOpen: (open: boolean) => void
     open: boolean
 }) {
-    const { post, processing, setData, errors, data, reset } = useForm({
+    const { post, processing, setData, errors, data, reset } = useForm<{
+        name: string
+        testimonial: string
+        rating: number
+        image: File | null
+        position: string
+        company: string
+    }>({
         name: '',
         testimonial: '',
         rating: 5,
@@ -37,7 +44,6 @@ export default function Modal({
         getRootProps,
         getInputProps,
         isDragActive,
-        acceptedFiles,
     } = useDropzone({
         onDrop,
         accept: { 'image/*': [] },
@@ -52,7 +58,7 @@ export default function Modal({
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
-        post('/testimonials', {
+        post(route("testimonials.store"), {
             onSuccess: () => {
                 handleClose()
             },
@@ -179,14 +185,14 @@ export default function Modal({
                                 <button
                                     type="button"
                                     onClick={handleClose}
-                                    className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-100 hover:bg-gray-50"
+                                    className="rounded-md border border-gray-300 bg-slate-200 text-black px-4 py-2 text-sm font-medium cursor-pointer hover:bg-slate-300"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
                                     disabled={processing}
-                                    className="rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500 disabled:opacity-50"
+                                    className="rounded-md bg-gradient-to-r from-indigo-500 to-purple-500 px-4 py-2 text-sm font-medium cursor-pointer text-white hover:bg-indigo-500 disabled:opacity-50"
                                 >
                                     {processing ? 'Saving...' : 'Save'}
                                 </button>

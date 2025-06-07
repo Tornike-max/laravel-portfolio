@@ -89,7 +89,7 @@ const Testimonials = ({ testimonials }: { testimonials: TestimonialPaginatedResp
                 whileHover={{ rotate: 5, scale: 1.05 }}
               >
                 <img 
-                  src={testimonial.image} 
+                  src={testimonial.image ? `./storage/${testimonial.image}` : ""} 
                   alt={testimonial.name} 
                   className="w-full h-full object-cover"
                 />
