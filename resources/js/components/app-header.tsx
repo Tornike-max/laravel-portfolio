@@ -15,8 +15,10 @@ import {  Menu } from 'lucide-react';
 import AppLogo from './app-logo';
 import AppLogoIcon from './app-logo-icon';
 import { mainNavItems, rightNavItems } from '@/constants/contsants';
+import { useEffect, useState } from 'react';
 
 const activeItemStyles = 'text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100';
+
 
 interface AppHeaderProps {
     breadcrumbs?: BreadcrumbItem[];
@@ -26,9 +28,54 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
     const page = usePage<SharedData>();
     const { auth } = page.props;
     const getInitials = useInitials();
+    const [activeSection, setActiveSection] = useState('home');
+
+    useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+      if (visibleEntries.length > 0) {
+        const sorted = visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        setActiveSection(sorted[0].target.id);
+      }
+    },
+    {
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0.4,
+    }
+  );
+
+  const elements: HTMLElement[] = [];
+
+  mainNavItems.forEach(({ id }) => {
+    const el = document.getElementById(id || '');
+    if (el) {
+      observer.observe(el);
+      elements.push(el);
+    }
+  });
+
+  return () => {
+    elements.forEach((el) => observer.unobserve(el));
+    observer.disconnect();
+  };
+}, []);
+
+
+
+  const handleClick = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    const yOffset = -80; // ჰედერის სიმაღლე (შეამოწმე ზუსტად)
+    const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    setActiveSection(id);
+  }
+};
+
     return (
         <>
-            <div className="border-sidebar-border/80 border-b">
+            <div className="border-sidebar-border/80 border-b fixed top-0 left-0 right-0 z-50 bg-background backdrop-blur-sm">
                 <div className="mx-auto flex h-16 items-center px-4 md:max-w-7xl">
                     {/* Mobile Menu */}
                     <div className="lg:hidden">
@@ -47,10 +94,10 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                                     <div className="flex h-full flex-col justify-between text-sm">
                                         <div className="flex flex-col space-y-4">
                                             {mainNavItems.map((item) => (
-                                                <Link key={item.title} href={item.href} className="flex items-center space-x-2 font-medium">
+                                                <button key={item.title} onClick={()=>handleClick(item.id || "")} className={`flex items-center space-x-2 font-medium cursor-pointer py-2 hover:bg-slate-800 rounded-md px-1 ${activeSection === item.id ? "bg-slate-800" : ""}`}>
                                                     {item.icon && <Icon iconNode={item.icon} className="h-5 w-5" />}
                                                     <span>{item.title}</span>
-                                                </Link>
+                                                </button>
                                             ))}
                                         </div>
 
@@ -79,26 +126,24 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="ml-6 hidden h-full items-center space-x-6 lg:flex">
+                    <div className="ml-6 hidden h-full items-center space-x-6 lg:flex bg-">
                         <NavigationMenu className="flex h-full items-stretch">
                             <NavigationMenuList className="w-full flex h-full items-stretch space-x-2">
                                 {mainNavItems.map((item, index) => (
                                     <NavigationMenuItem key={index} className="relative flex h-full items-center">
-                                        <Link
-                                            href={item.href}
+                                        <button
+                                            onClick={() => handleClick(item.id || '')}
                                             className={cn(
-                                                navigationMenuTriggerStyle(),
-                                                page.url === item.href && activeItemStyles,
-                                                'h-9 cursor-pointer px-3',
+                                            navigationMenuTriggerStyle(),
+                                            activeSection === item.id && activeItemStyles,
+                                            'h-9 cursor-pointer px-3',
                                             )}
                                         >
                                             {item.icon && <Icon iconNode={item.icon} className="mr-2 h-4 w-4" />}
                                             {item.title}
-                                        </Link>
-                                        {page.url === item.href && (
-                                            <div className="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"></div>
-                                        )}
+                                        </button>
                                     </NavigationMenuItem>
+
                                 ))}
                             </NavigationMenuList>
                         </NavigationMenu>

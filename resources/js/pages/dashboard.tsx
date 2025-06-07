@@ -1,5 +1,5 @@
 import AppLayout from '@/layouts/app-layout';
-import { Skill, Testimonial, TestimonialPaginatedResponse, Type, type BreadcrumbItem } from '@/types';
+import { Skill, TestimonialPaginatedResponse, Type, type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 
 import FirstSection from '@/sections/firstSection';
@@ -23,15 +23,36 @@ export default function Dashboard({skills,types,allskills,testimonials}:{ skills
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
-            <FirstSection skills={skills}/>
-            <About types={types.map(type => ({
-                ...type,
-                description: type.description ?? ''
-            }))}/>
-            <Work />
-            <Skills skills={allskills}/>
-            <Testimonials testimonials={testimonials}/>
-            <Contact />
+
+            <section id="home">
+                <FirstSection skills={skills} />
+            </section>
+
+            <section id="about">
+                <About
+                types={types.map((type) => ({
+                    ...type,
+                    description: type.description ?? '',
+                }))}
+                />
+            </section>
+
+            <section id="work">
+                <Work />
+            </section>
+
+            <section id="skills">
+                <Skills skills={allskills} />
+            </section>
+
+            <section id="testimonials">
+                <Testimonials testimonials={testimonials} />
+            </section>
+
+            <section id="contact">
+                <Contact />
+            </section>
+
             <Footer />
         </AppLayout>
     );

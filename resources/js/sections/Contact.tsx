@@ -65,7 +65,7 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" className="w-full m-auto px-4 py-12">
+    <section  className="w-full m-auto px-4 py-12">
       <motion.h2 
         className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
         initial={{ opacity: 0, y: -20 }}
@@ -261,7 +261,7 @@ const Contact = () => {
           )}
         </motion.div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

@@ -38,7 +38,7 @@ const Testimonials = ({ testimonials }: { testimonials: TestimonialPaginatedResp
   const [open, setOpen] = useState(false)
   
   return (
-    <div className="w-full m-auto px-4 py-12">
+    <section className="w-full m-auto px-4 py-12">
       <motion.h2 
         className="text-3xl font-bold text-center mb-4 text-gray-900 dark:text-white"
         initial={{ opacity: 0, y: -20 }}
@@ -96,7 +96,7 @@ const Testimonials = ({ testimonials }: { testimonials: TestimonialPaginatedResp
               </motion.div>
               <div className="ml-4">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">{testimonial.name}</h3>
-                <p className="text-sm text-indigo-500 dark:text-indigo-400">{testimonial.position}</p>
+                <p className="text-sm bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">{testimonial.position}</p>
               </div>
             </div>
 
@@ -124,8 +124,7 @@ const Testimonials = ({ testimonials }: { testimonials: TestimonialPaginatedResp
         ))}
       </motion.div>
 
-      {/* პაგინაცია */}
-      <motion.div 
+      {testimonials.data.length <= 3 ? "" : <motion.div 
         className="flex justify-center mt-12 flex-wrap gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -144,9 +143,10 @@ const Testimonials = ({ testimonials }: { testimonials: TestimonialPaginatedResp
             dangerouslySetInnerHTML={{ __html: link.label }}
           />
         ))}
-      </motion.div>
+      </motion.div>}
+      
 
-      {/* ყველა რეკომენდაციის ღილაკი */}
+      {testimonials.data.length <= 3 ? "" : 
       <motion.div 
         className="flex justify-center mt-12 gap-4"
         initial={{ opacity: 0 }}
@@ -160,8 +160,9 @@ const Testimonials = ({ testimonials }: { testimonials: TestimonialPaginatedResp
         >
           ყველა რეკომენდაცია
         </motion.button>
-      </motion.div>
-    </div>
+      </motion.div>}
+      
+    </section>
   );
 };
 

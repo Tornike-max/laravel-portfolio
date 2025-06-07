@@ -41,7 +41,7 @@ const Skills = ({skills}:{skills:Skill[]}) => {
   console.log(skills.map(skill => skill.type?.type.split(" ")[0]))
 
   return (
-    <div className=" w-full m-auto px-4 py-12">
+    <section className=" w-full m-auto px-4 py-12">
       {/* ფილტრის ღილაკები */}
       <motion.div 
         className="max-w-[700px] w-full m-auto grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 py-8"
@@ -112,7 +112,7 @@ const Skills = ({skills}:{skills:Skill[]}) => {
           </motion.div>
         ))}
       </motion.div>
-    </div>
+    </section>
   );
 };
 
