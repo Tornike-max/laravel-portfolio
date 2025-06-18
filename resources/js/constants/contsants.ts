@@ -1,5 +1,5 @@
 import { NavItem } from "@/types";
-import { Brain, Contact, Folder, Github, Home, Laptop, Linkedin, User } from "lucide-react";
+import { Brain, Contact, Folder, Github, Home, Laptop, Linkedin, User, FileQuestionIcon } from "lucide-react";
 
 export const mainNavItems: NavItem[] = [
 
@@ -32,11 +32,12 @@ export const mainNavItems: NavItem[] = [
         href: '/skills',
         icon: Brain,
     },
-    // {
-    //     title: 'Testimonials',
-    //     href: '/testimonial',
-    //     icon: Rows4,
-    // },
+    {
+        id: 'testimonials',  
+        title: 'Testimonials',
+        href: '/testimonial',
+        icon: FileQuestionIcon,
+    },
     {
         id: 'contact',
         title: 'Contact',
