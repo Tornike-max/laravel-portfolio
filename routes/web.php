@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SkillsController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\TestimonialsController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +18,8 @@ Route::get("/dashboard",[MainController::class,"index"])->name("dashboard");
 Route::post("/testimonials/store",[TestimonialsController::class,'store'])->name("testimonials.store");
 
 Route::get("/admin-secret",[AdminController::class,"index"])->middleware('auth')->name("admin.secret");
+Route::get("/admin-secret/skills",[SkillsController::class,"index"])->middleware('auth')->name("admin.secret.skills");
+Route::post("/admin-secret/skills",[SkillsController::class,"store"])->middleware('auth')->name("admin.secret.skills.store");
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

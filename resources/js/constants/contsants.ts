@@ -12,7 +12,7 @@ export const mainNavItems: NavItem[] = [
     {
         id: 'about',
         title: 'About',
-        href: '/about',
+        href: 'admin-secret/about',
         icon: User,
     },
     // {
@@ -29,7 +29,7 @@ export const mainNavItems: NavItem[] = [
     {
         id: 'skills',  
         title: 'Skills',
-        href: '/skills',
+        href: '/admin-secret/skills',
         icon: Brain,
     },
     {
