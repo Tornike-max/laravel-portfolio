@@ -25,8 +25,8 @@ export interface Type {
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    title: 'Dashboard',
-    href: '/admin/dashboard',
+    title: 'Skills',
+    href: '/admin-secret/skills',
   },
 ];
 
@@ -104,7 +104,7 @@ const AdminSkills = ({ skills,types }: { skills: Skill[],types:Type[] }) => {
             <label className="block mb-1">Icon (e.g. 💻)</label>
             <input
               type="file"
-              onChange={(e) => setData('icon', e.target.files[0])}
+              onChange={(e) => setData('icon', e.target.files && e.target.files[0] ? e.target.files[0] : null)}
               className="w-full px-4 py-2 rounded text-white border-2 border-white"
             />
             {errors.icon && <span className='text-red-500 text-sn text-start'>{errors.icon}</span>}

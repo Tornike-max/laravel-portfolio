@@ -92,4 +92,16 @@ export interface TestimonialPaginatedResponse {
   total: number;
 }
 
-
+export interface WorkTypes {
+    id: number;
+    title: string;
+    description: string;
+    image?: string;
+    slug: string;
+    type: Type;
+    skills: Skill[];
+    created_at: string;
+    updated_at: string;
+    deleted_at?: string | null;
+    is_approved?: boolean;
+}

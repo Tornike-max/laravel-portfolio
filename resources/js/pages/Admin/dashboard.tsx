@@ -2,7 +2,7 @@
 
 import AppLayout from '@/layouts/app-layout';
 import { BreadcrumbItem } from "@/types";
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -39,12 +39,12 @@ const AdminDashboard = ({stats}:{stats:StatsItem[]}) => {
         <div className="mt-10">
           <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <a
-              href="/admin/projects"
+            <Link
+              href="/admin-secret/work"
               className="bg-blue-500 text-white rounded-xl p-4 hover:bg-blue-600 transition"
             >
               ➕ Manage Projects
-            </a>
+            </Link>
             <a
               href="/admin/skills"
               className="bg-green-500 text-white rounded-xl p-4 hover:bg-green-600 transition"
