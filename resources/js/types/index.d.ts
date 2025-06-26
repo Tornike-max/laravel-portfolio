@@ -48,6 +48,10 @@ export interface Skill {
     slug?: string;
     icon?: LucideIcon | null;
     type?: Type;
+    type_id?: number;
+    id?: number;
+    created_at?: string;
+    updated_at?: string;
 }
 
 export interface Type {

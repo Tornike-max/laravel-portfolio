@@ -21,6 +21,9 @@ Route::post("/testimonials/store",[TestimonialsController::class,'store'])->name
 Route::get("/admin-secret",[AdminController::class,"index"])->middleware('auth')->name("admin.secret");
 Route::get("/admin-secret/skills",[SkillsController::class,"index"])->middleware('auth')->name("admin.secret.skills");
 Route::post("/admin-secret/skills",[SkillsController::class,"store"])->middleware('auth')->name("admin.secret.skills.store");
+Route::get("/admin-secret/skills-edit/{skill}",[SkillsController::class,"edit"])->middleware('auth')->name("admin.secret.skills.edit");
+Route::put("/admin-secret/skills-update/{skill}",[SkillsController::class,"update"])->middleware('auth')->name("admin.secret.skills.update");
+Route::delete("/admin-secret/skills-delete/{skill}",[SkillsController::class,'destroy'])->middleware('auth')->name("admin.secret.skills.delete");
 Route::get("/admin-secret/work",[WorkController::class,"index"])->middleware('auth')->name("admin.secret.work");
 
 require __DIR__.'/settings.php';

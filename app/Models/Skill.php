@@ -13,6 +13,8 @@ class Skill extends Model
     protected $fillable = [
         "name",
         "slug",
+        "icon",
+        "type_id"
     ];
 
     public function type() {
